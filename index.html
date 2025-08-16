@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ace Clothing</title>
 
-<!-- Playboi Carti "I AM Music" style font -->
+<!-- Playboi Carti style font -->
 <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
 
 <style>
@@ -52,7 +52,7 @@ header h1 {
   font-family: 'New Rocker', cursive;
   position:relative;
   z-index:10;
-  transition: opacity 0.4s ease; /* fade effect */
+  transition: opacity 0.4s ease;
 }
 
 /* Buttons top corners */
@@ -119,38 +119,13 @@ header h1 {
 }
 #sideMenu nav button:hover {background:#ffcc29;}
 
-/* Hero */
-.hero {
-  position:relative;
-  height:60vh;
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-.hero-slides .slide {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transition:opacity 1s ease;
-  z-index:1;
-}
-.hero-slides .slide.active {opacity:1;}
-
-/* Shop */
+/* Shop Grid */
 .shop {
-  padding:30px 20px;
+  padding:20px 20px 40px 20px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:40px;
-  position:relative;
-  z-index:1;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:0; /* no extra spacing */
 }
 .product {
   background:#1a1a1a;
@@ -162,7 +137,7 @@ header h1 {
 .product:hover {transform:scale(1.05);box-shadow:0 0 20px #f0a500;}
 .product img {
   width:100%;
-  height:320px;   /* bigger images */
+  height:320px;
   object-fit:cover;
   border-radius:8px;
 }
@@ -255,7 +230,7 @@ header h1 {
   width:90%;
   color:#fff;
 }
-#checkoutModal input, #checkoutModal select {
+#checkoutModal input {
   width:100%;
   margin-bottom:10px;
   padding:8px;
@@ -273,28 +248,26 @@ footer a {color:#f0a500;text-decoration:none;margin:0 10px;}
 <body>
 
 <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Ace_of_spades.svg" alt="Ace Logo" class="logo">
-    <h1 id="pageTitle">Ace Clothing</h1>
-    <div class="header-buttons">
-        <!-- Categories icon far left -->
-        <button id="menuBtn" onclick="toggleMenu()">
-          <svg width="28" height="28" viewBox="0 0 100 80" fill="#f0a500">
-            <rect width="100" height="10"></rect>
-            <rect y="30" width="100" height="10"></rect>
-            <rect y="60" width="100" height="10"></rect>
-          </svg>
-        </button>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Ace_of_spades.svg" alt="Ace Logo" class="logo">
+  <h1 id="pageTitle">Ace Clothing</h1>
+  <div class="header-buttons">
+      <button id="menuBtn" onclick="toggleMenu()">
+        <svg width="28" height="28" viewBox="0 0 100 80" fill="#f0a500">
+          <rect width="100" height="10"></rect>
+          <rect y="30" width="100" height="10"></rect>
+          <rect y="60" width="100" height="10"></rect>
+        </svg>
+      </button>
 
-        <!-- Cart icon far right -->
-        <button id="cartBtn" onclick="toggleCart()">
-          <svg viewBox="0 0 24 24">
-            <path d="M7 4h-2l-3 9h2l1-3h12l1 3h2l-3-9h-2l-1 3h-12l1-3zm1 13c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-          </svg>
-        </button>
-    </div>
+      <button id="cartBtn" onclick="toggleCart()">
+        <svg viewBox="0 0 24 24">
+          <path d="M7 4h-2l-3 9h2l1-3h12l1 3h2l-3-9h-2l-1 3h-12l1-3zm1 13c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+      </button>
+  </div>
 </header>
 
-<!-- Shop Section directly under logo + title -->
+<!-- Shop Section directly below title -->
 <section class="shop" id="shop">
     <div class="product" data-category="Shirt">
         <img src="shirt.jpeg">
@@ -313,20 +286,19 @@ footer a {color:#f0a500;text-decoration:none;margin:0 10px;}
     </div>
 </section>
 
-<!-- Hero -->
+<!-- Hero Slider optional -->
 <section class="hero" id="home">
-    <div class="hero-slides">
-        <div class="slide active" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+1');"></div>
-        <div class="slide" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+2');"></div>
-        <div class="slide" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+3');"></div>
-    </div>
+  <div class="hero-slides">
+      <div class="slide active" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+1');"></div>
+      <div class="slide" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+2');"></div>
+      <div class="slide" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+3');"></div>
+  </div>
 </section>
 
 <!-- Side Menu -->
 <div id="sideMenu">
   <button onclick="toggleMenu()">X</button>
   <nav>
-    <a href="#home" onclick="toggleMenu()">Home</a>
     <a href="#shop" onclick="toggleMenu()">Shop</a>
     <h3 style="margin-top:20px;">Categories</h3>
     <button onclick="filterProducts('all')">All</button>
@@ -338,46 +310,34 @@ footer a {color:#f0a500;text-decoration:none;margin:0 10px;}
 
 <!-- Cart Panel -->
 <div class="cart-panel" id="cartPanel">
-    <button class="close-cart" onclick="toggleCart()">X</button>
-    <h2>Your Cart</h2>
-    <div id="cartItems"></div>
-    <p>Total: $<span id="total">0</span></p>
-    <button onclick="checkout()">Checkout</button>
-    <div class="payment">
-        <img src="https://via.placeholder.com/60x40?text=Visa">
-        <img src="https://via.placeholder.com/60x40?text=Mastercard">
-        <img src="https://via.placeholder.com/60x40?text=PayPal">
-        <img src="https://via.placeholder.com/60x40?text=Mpesa">
-    </div>
+  <button class="close-cart" onclick="toggleCart()">X</button>
+  <h2>Your Cart</h2>
+  <div id="cartItems"></div>
+  <p>Total: $<span id="total">0</span></p>
+  <button onclick="checkout()">Checkout</button>
+  <div class="payment">
+      <img src="https://via.placeholder.com/60x40?text=Mpesa" alt="M-Pesa">
+  </div>
 </div>
 
 <!-- Checkout Modal -->
 <div id="checkoutModal">
-    <div>
-        <h3>Checkout</h3>
-        <input type="text" placeholder="Full Name">
-        <input type="text" placeholder="Address">
-        <select>
-            <option>Visa</option>
-            <option>Mastercard</option>
-            <option>PayPal</option>
-            <option>M-Pesa</option>
-        </select>
-        <button onclick="completeCheckout()">Complete</button>
-        <button onclick="closeCheckout()">Cancel</button>
-    </div>
+  <div>
+    <h3>Checkout</h3>
+    <input type="text" placeholder="Full Name" id="fullName">
+    <input type="text" placeholder="Phone Number" id="phoneNumber">
+    <button onclick="simulateMpesaPayment()">Pay with M-Pesa</button>
+    <button onclick="closeCheckout()">Cancel</button>
+  </div>
 </div>
 
-<!-- Footer -->
 <footer>
-    Contact: 0757718220 | IG: <a href="https://instagram.com/not4.plot" target="_blank">@not4.plot</a>
+  Contact: 0757718220 | IG: <a href="https://instagram.com/not4.plot" target="_blank">@not4.plot</a>
 </footer>
 
 <script>
 // Sliding Menu
-function toggleMenu() {
-  document.getElementById('sideMenu').classList.toggle('open');
-}
+function toggleMenu() { document.getElementById('sideMenu').classList.toggle('open'); }
 
 // Hero Slider
 let slideIndex = 0;
@@ -391,16 +351,14 @@ setInterval(showSlides, 4000);
 
 // Cart
 let cart = [];
-function toggleCart() {
-  document.getElementById('cartPanel').classList.toggle('open');
-}
+function toggleCart() { document.getElementById('cartPanel').classList.toggle('open'); }
 function flyToCart(button){
     const product = button.closest('.product');
     const name = product.querySelector('h3').innerText;
     const price = parseInt(product.querySelector('p').innerText.replace('$',''));
     cart.push({name,price});
     updateCart();
-    toggleCart(); // open cart automatically
+    toggleCart();
 }
 function updateCart(){
     const cartItems = document.getElementById('cartItems');
@@ -418,7 +376,20 @@ function updateCart(){
 function removeItem(index){cart.splice(index,1);updateCart();}
 function checkout(){document.getElementById('checkoutModal').style.display='flex';}
 function closeCheckout(){document.getElementById('checkoutModal').style.display='none';}
-function completeCheckout(){alert('Thank you for shopping!');cart=[];updateCart();closeCheckout();}
+
+// Simulate M-Pesa Payment
+function simulateMpesaPayment(){
+    const name = document.getElementById('fullName').value;
+    const phone = document.getElementById('phoneNumber').value;
+    if(!name || !phone){
+        alert('Please enter your name and phone number');
+        return;
+    }
+    alert(`M-Pesa Payment Successful!\nName: ${name}\nPhone: ${phone}\nAmount: $${document.getElementById('total').innerText}`);
+    cart = [];
+    updateCart();
+    closeCheckout();
+}
 
 // Filter Products
 function filterProducts(category){
@@ -434,11 +405,8 @@ let lastScroll = 0;
 const title = document.getElementById('pageTitle');
 window.addEventListener('scroll', () => {
   const current = window.pageYOffset;
-  if (current > lastScroll) {
-    title.style.opacity = "0"; // scrolling down -> hide
-  } else {
-    title.style.opacity = "1"; // scrolling up -> show
-  }
+  if (current > lastScroll) { title.style.opacity = "0"; }
+  else { title.style.opacity = "1"; }
   lastScroll = current;
 });
 </script>
