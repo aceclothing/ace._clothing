@@ -1,183 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ace Clothing</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background: #111;
-      border-bottom: 1px solid #333;
-    }
-    header h1 {
-      font-size: 24px;
-      font-weight: bold;
-    }
-    header button {
-      background: none;
-      border: 1px solid #fff;
-      padding: 8px 16px;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-    main {
-      padding: 20px;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    .product {
-      background: #111;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-    }
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .product button {
-      margin-top: 10px;
-      padding: 8px 12px;
-      background: #fff;
-      color: #000;
-      border: none;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-    .cart {
-      padding: 20px;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
-      border-bottom: 1px solid #333;
-    }
-    .total {
-      display: flex;
-      justify-content: space-between;
-      font-weight: bold;
-      padding-top: 10px;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 20px;
-      background: #111;
-      border-top: 1px solid #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    footer a {
-      color: #bbb;
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ace Clothing</title>
+<style>
+/* General */
+body {margin:0;font-family:Arial,sans-serif;background:#0d0d0d;color:#fff;overflow-x:hidden;}
+body::before {content:"ACE CLOTHING";position:fixed;top:40%;left:10%;font-size:8rem;color:rgba(255,255,255,0.05);transform:rotate(-30deg);pointer-events:none;z-index:0;}
+
+/* Header */
+header {
+  background:#111;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+header h1 {margin:0;font-size:1.8rem;letter-spacing:2px;position:relative;z-index:10;}
+
+/* Buttons below title */
+.header-buttons {
+  margin-top:10px;
+  display:flex;
+  justify-content:space-between;
+  width:90%;
+  max-width:1200px;
+  align-items:center;
+}
+.header-buttons button {
+  background:none;
+  border:none;
+  cursor:pointer;
+  transition:.3s;
+}
+
+/* Cart Icon */
+#cartBtn svg {width:28px;height:28px;fill:#f0a500;transition:.3s;filter: drop-shadow(0 0 2px #f0a500);}
+#cartBtn:hover svg {fill:#ffcc29;filter: drop-shadow(0 0 5px #f0a500) drop-shadow(0 0 10px #ffcc29);transform:scale(1.1);}
+
+/* Left Sliding Menu */
+#sideMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: #111;
+    color: #fff;
+    z-index: 101;
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+#sideMenu.open {transform: translateX(0);}
+#sideMenu nav a, #sideMenu nav button {margin:10px 0;color:#fff;text-decoration:none;font-size:1.2rem;width:100%;text-align:left;}
+#sideMenu nav button {background:#f0a500;color:#111;border:none;border-radius:5px;padding:8px;cursor:pointer;}
+#sideMenu nav button:hover {background:#ffcc29;}
+
+/* Hero */
+.hero {position:relative;height:60vh;text-align:center;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-slides .slide {position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease;z-index:1;}
+.hero-slides .slide.active {opacity:1;}
+.crazy-font {
+    position:absolute;
+    color:#444;
+    font-size:4rem;
+    font-weight:900;
+    z-index:2;
+    padding:10px 20px;
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-family:'Courier New', monospace;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #222, 2px 2px 5px #111, -2px -2px 5px #111;
+    transform: rotate(-7deg) skew(-10deg,5deg);
+    transition:transform .3s ease, color .3s ease;
+}
+.crazy-font:hover {
+    transform: rotate(7deg) skew(10deg,-5deg) scale(1.05);
+    color:#555;
+    text-shadow: 2px 2px 2px #111, -2px -2px 2px #222, 1px -1px 3px #000;
+}
+
+/* Shop */
+.shop {padding:50px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;position:relative;z-index:1;}
+.product {background:#1a1a1a;padding:15px;text-align:center;border-radius:10px;transition:transform .3s,box-shadow .3s,opacity .3s;}
+.product:hover {transform:scale(1.05);box-shadow:0 0 20px #f0a500;}
+.product img {width:100%;height:200px;object-fit:cover;border-radius:8px;}
+.product h3 {margin:10px 0 5px 0;}
+.product p {margin:5px 0;color:#f0a500;}
+.product button {margin-top:10px;padding:10px 15px;background:#f0a500;color:#111;border:none;cursor:pointer;border-radius:5px;transition:.3s;}
+.product button:hover {background:#ffcc29;}
+
+/* Cart Panel */
+.cart-panel {position:fixed;top:0;right:0;width:350px;max-width:90%;height:100%;background:#111;padding:20px;box-shadow:-5px 0 15px rgba(0,0,0,0.5);z-index:100;overflow-y:auto;display:none;}
+.cart-panel.open {display:block;}
+.cart-panel h2 {margin-top:0;letter-spacing:1px;}
+.cart-item {display:flex;justify-content:space-between;margin:15px 0;font-size:.95rem;}
+.cart-item button {background:#f0a500;border:none;padding:3px 7px;cursor:pointer;border-radius:3px;transition:.3s;}
+.cart-item button:hover {background:#ffcc29;}
+.cart-panel .close-cart {position:absolute;top:10px;right:10px;background:#f0a500;color:#111;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;transition:.3s;}
+.cart-panel .close-cart:hover {background:#ffcc29;}
+.payment img {width:60px;margin:0 10px;}
+
+/* Checkout Modal */
+#checkoutModal {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:100;align-items:center;justify-content:center;}
+#checkoutModal div {background:#111;padding:30px;border-radius:10px;max-width:400px;width:90%;color:#fff;}
+#checkoutModal input, #checkoutModal select {width:100%;margin-bottom:10px;padding:8px;border-radius:5px;border:none;background:#1a1a1a;color:#fff;}
+
+/* Footer */
+footer {padding:20px;background:#111;text-align:center;}
+footer a {color:#f0a500;text-decoration:none;margin:0 10px;}
+</style>
 </head>
 <body>
-  <header>
-    <h1>Ace Clothing</h1>
-    <button onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
-  </header>
 
-  <main id="shop">
-    <h2>Shop Collection</h2>
-    <div class="products" id="product-list"></div>
-  </main>
+<header>
+    <h1 style="text-align:center;">Ace Clothing</h1>
+    <div class="header-buttons">
+        <!-- Categories icon far left -->
+        <button id="menuBtn" onclick="toggleMenu()">
+          <svg width="28" height="28" viewBox="0 0 100 80" fill="#f0a500">
+            <rect width="100" height="10"></rect>
+            <rect y="30" width="100" height="10"></rect>
+            <rect y="60" width="100" height="10"></rect>
+          </svg>
+        </button>
 
-  <main id="cart" style="display:none;">
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <div class="total">
-      <span>Total</span>
-      <span id="cart-total">$0</span>
+        <!-- Cart icon far right -->
+        <button id="cartBtn" onclick="toggleCart()">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 4h-2l-3 9h2l1-3h12l1 3h2l-3-9h-2l-1 3h-12l1-3zm1 13c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
+        </button>
     </div>
-    <button style="margin-top:15px; width:100%;">Proceed to Payment</button>
-    <p style="color:#bbb; font-size:14px; margin-top:5px;">Payment methods: Visa, MasterCard, PayPal</p>
-  </main>
+</header>
 
-  <footer>
-    <p>📞 0757718220</p>
-    <a href="https://instagram.com/not4.plot" target="_blank">📷 @not4.plot</a>
-  </footer>
+<!-- Left Sliding Panel -->
+<div id="sideMenu">
+  <button onclick="toggleMenu()">X</button>
+  <nav>
+    <a href="#home" onclick="toggleMenu()">Home</a>
+    <a href="#shop" onclick="toggleMenu()">Shop</a>
+    <h3 style="margin-top:20px;">Categories</h3>
+    <button onclick="filterProducts('all')">All</button>
+    <button onclick="filterProducts('Shirt')">Shirts</button>
+    <button onclick="filterProducts('Shoes')">Shoes</button>
+    <button onclick="filterProducts('Trousers')">Trousers</button>
+  </nav>
+</div>
 
-  <script>
-    const products = [
-      { id: 1, name: "Ace Hoodie", price: 45, image: "https://via.placeholder.com/300x400?text=Ace+Hoodie" },
-      { id: 2, name: "Ace T-Shirt", price: 25, image: "https://via.placeholder.com/300x400?text=Ace+T-Shirt" },
-      { id: 3, name: "Ace Cap", price: 15, image: "https://via.placeholder.com/300x400?text=Ace+Cap" },
-    ];
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-slides">
+        <div class="slide active" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+1');"></div>
+        <div class="slide" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+2');"></div>
+        <div class="slide" style="background-image:url('https://via.placeholder.com/1500x600?text=Luxury+Streetwear+3');"></div>
+    </div>
+    <h2 class="crazy-font">Redefined Streetwear</h2>
+</section>
 
-    const productList = document.getElementById("product-list");
-    const cartItems = document.getElementById("cart-items");
-    const cartTotal = document.getElementById("cart-total");
-    const cartCount = document.getElementById("cart-count");
+<!-- Shop Section -->
+<section class="shop" id="shop">
+    <!-- Products -->
+    <div class="product" data-category="Shirt">
+        <img src="https://via.placeholder.com/300x300?text=Shirt+1">
+        <h3>Black Hoodie</h3><p>$40</p>
+        <button onclick="flyToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Shirt">
+        <img src="https://via.placeholder.com/300x300?text=Shirt+2">
+        <h3>White Tee</h3><p>$25</p>
+        <button onclick="flyToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Shoes">
+        <img src="https://via.placeholder.com/300x300?text=Shoes+1">
+        <h3>Black Sneakers</h3><p>$60</p>
+        <button onclick="flyToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Shoes">
+        <img src="https://via.placeholder.com/300x300?text=Shoes+2">
+        <h3>White Sneakers</h3><p>$55</p>
+        <button onclick="flyToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Trousers">
+        <img src="https://via.placeholder.com/300x300?text=Trousers+1">
+        <h3>Denim Jeans</h3><p>$50</p>
+        <button onclick="flyToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Trousers">
+        <img src="https://via.placeholder.com/300x300?text=Trousers+2">
+        <h3>Black Cargo Pants</h3><p>$45</p>
+        <button onclick="flyToCart(this)">Add to Cart</button>
+    </div>
+</section>
 
-    let cart = [];
+<!-- Cart Panel -->
+<div class="cart-panel" id="cartPanel">
+    <button class="close-cart" onclick="toggleCart()">X</button>
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <p>Total: $<span id="total">0</span></p>
+    <button onclick="checkout()">Checkout</button>
+    <div class="payment">
+        <img src="https://via.placeholder.com/60x40?text=Visa">
+        <img src="https://via.placeholder.com/60x40?text=Mastercard">
+        <img src="https://via.placeholder.com/60x40?text=PayPal">
+    </div>
+</div>
 
-    function renderProducts() {
-      products.forEach(p => {
-        const div = document.createElement("div");
-        div.className = "product";
-        div.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" />
-          <h3>${p.name}</h3>
-          <p>$${p.price}</p>
-          <button onclick="addToCart(${p.id})">Add to Cart</button>
-        `;
-        productList.appendChild(div);
-      });
-    }
+<!-- Checkout Modal -->
+<div id="checkoutModal">
+    <div>
+        <h3>Checkout</h3>
+        <input type="text" placeholder="Full Name">
+        <input type="text" placeholder="Address">
+        <select>
+            <option>Visa</option>
+            <option>Mastercard</option>
+            <option>PayPal</option>
+        </select>
+        <button onclick="completeCheckout()">Complete</button>
+        <button onclick="closeCheckout()">Cancel</button>
+    </div>
+</div>
 
-    function addToCart(id) {
-      const product = products.find(p => p.id === id);
-      cart.push(product);
-      updateCart();
-    }
+<!-- Footer -->
+<footer>
+    Contact: 0757718220 | IG: <a href="https://instagram.com/not4.plot" target="_blank">@not4.plot</a>
+</footer>
 
-    function updateCart() {
-      cartItems.innerHTML = "";
-      let total = 0;
-      cart.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "cart-item";
-        div.innerHTML = `<span>${item.name}</span><span>$${item.price}</span>`;
+<script>
+// Sliding Menu
+function toggleMenu() {document.getElementById('sideMenu').classList.toggle('open');}
+
+// Hero Slider
+let slideIndex = 0;
+const slides = document.querySelectorAll('.hero-slides .slide');
+function showSlides() {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[slideIndex].classList.add('active');
+    slideIndex = (slideIndex + 1) % slides.length;
+}
+setInterval(showSlides, 4000);
+
+// Cart
+let cart = [];
+function toggleCart() {document.getElementById('cartPanel').classList.toggle('open');}
+function flyToCart(button){
+    const product = button.closest('.product');
+    const name = product.querySelector('h3').innerText;
+    const price = parseInt(product.querySelector('p').innerText.replace('$',''));
+    cart.push({name,price});
+    updateCart();
+    toggleCart(); // open cart automatically
+}
+function updateCart(){
+    const cartItems = document.getElementById('cartItems');
+    cartItems.innerHTML='';
+    let total=0;
+    cart.forEach((item,index)=>{
+        total+=item.price;
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML=`${item.name} - $${item.price} <button onclick="removeItem(${index})">X</button>`;
         cartItems.appendChild(div);
-        total += item.price;
-      });
-      cartTotal.textContent = `$${total}`;
-      cartCount.textContent = cart.length;
-    }
+    });
+    document.getElementById('total').innerText=total;
+}
+function removeItem(index){cart.splice(index,1);updateCart();}
+function checkout(){document.getElementById('checkoutModal').style.display='flex';}
+function closeCheckout(){document.getElementById('checkoutModal').style.display='none';}
+function completeCheckout(){alert('Thank you for shopping!');cart=[];updateCart();closeCheckout();}
 
-    function toggleCart() {
-      const shop = document.getElementById("shop");
-      const cartPage = document.getElementById("cart");
-      if (shop.style.display === "none") {
-        shop.style.display = "block";
-        cartPage.style.display = "none";
-      } else {
-        shop.style.display = "none";
-        cartPage.style.display = "block";
-      }
-    }
-
-    renderProducts();
-  </script>
+// Filter Products
+function filterProducts(category){
+    const products = document.querySelectorAll('.product');
+    products.forEach(p=>{
+        if(category==='all'||p.dataset.category===category)p.style.display='block';
+        else p.style.display='none';
+    });
+}
+</script>
 </body>
 </html>
