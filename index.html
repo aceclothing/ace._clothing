@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ace Clothing - Catalog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold">Ace Clothing</h1>
+      <nav class="space-x-6 font-medium">
+        <a href="#home" class="hover:text-blue-600">Home</a>
+        <a href="#shop" class="hover:text-blue-600">Shop</a>
+        <a href="#about" class="hover:text-blue-600">About</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-16">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="text-4xl font-bold mb-4">Fashion That Fits You</h2>
+      <p class="text-lg mb-6">Browse our latest clothing collection below.</p>
+      <a href="#shop" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-200">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Shop Section -->
+  <section id="shop" class="py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Our Collection</h2>
+      <div class="space-y-8">
+
+        <!-- Product 1 -->
+        <div class="flex items-center bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" alt="White T-Shirt" class="w-32 h-32 object-cover rounded-lg mr-6">
+          <div>
+            <h3 class="text-xl font-semibold">Classic White T-Shirt</h3>
+            <p class="text-gray-600">Soft cotton tee, perfect for everyday casual wear.</p>
+            <p class="mt-2 font-bold">$15</p>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="flex items-center bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3f3e" alt="Denim Jacket" class="w-32 h-32 object-cover rounded-lg mr-6">
+          <div>
+            <h3 class="text-xl font-semibold">Denim Jacket</h3>
+            <p class="text-gray-600">Timeless style that pairs with anything.</p>
+            <p class="mt-2 font-bold">$45</p>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="flex items-center bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1519744346361-d4c3e3c25f7f" alt="Floral Summer Dress" class="w-32 h-32 object-cover rounded-lg mr-6">
+          <div>
+            <h3 class="text-xl font-semibold">Floral Summer Dress</h3>
+            <p class="text-gray-600">Light and breezy, perfect for sunny days.</p>
+            <p class="mt-2 font-bold">$35</p>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="flex items-center bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552" alt="Casual Hoodie" class="w-32 h-32 object-cover rounded-lg mr-6">
+          <div>
+            <h3 class="text-xl font-semibold">Casual Hoodie</h3>
+            <p class="text-gray-600">Warm, soft, and perfect for chilly evenings.</p>
+            <p class="mt-2 font-bold">$30</p>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="flex items-center bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1600180758895-98a3cfa67a8d" alt="Running Sneakers" class="w-32 h-32 object-cover rounded-lg mr-6">
+          <div>
+            <h3 class="text-xl font-semibold">Running Sneakers</h3>
+            <p class="text-gray-600">Lightweight, durable, and built for speed.</p>
+            <p class="mt-2 font-bold">$60</p>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="flex items-center bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+          <img src="https://images.unsplash.com/photo-1528701800489-20be3c3f1b47" alt="Leather Jacket" class="w-32 h-32 object-cover rounded-lg mr-6">
+          <div>
+            <h3 class="text-xl font-semibold">Black Leather Jacket</h3>
+            <p class="text-gray-600">Premium urban look with sleek finish.</p>
+            <p class="mt-2 font-bold">$80</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="bg-gray-100 py-16">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="text-3xl font-bold mb-4">About Us</h2>
+      <p class="text-gray-700 text-lg">
+        Ace Clothing is where fashion meets comfort. We bring you everyday essentials and trendy outfits at the best prices.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
+      <p class="text-gray-700 mb-6">Have questions? We'd love to hear from you.</p>
+      <a href="mailto:aceclothing@email.com" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700">Email Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-6 text-center">
+    <p>&copy; 2025 Ace Clothing. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
+
+
 
